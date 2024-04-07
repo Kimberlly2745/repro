@@ -1,0 +1,476 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    
+
+    }
+
+    *::-webkit-scrollbar {
+        display: none;
+    }
+      
+
+main{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background: linear-gradient(to right, #ffb6c1, #f08080, #ff69b4, #ffffff);
+    overflow: hidden;
+   
+}
+
+.container{
+    width: 350px;
+    height: 650px;
+    padding: 25px 35px;
+    position:relative;
+    z-index: 50;
+    border-radius: 15px;
+}
+
+#container{
+    background: rgba(255, 255, 255, 0.158);
+    backdrop-filter: blur(1px);
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.5);
+}
+
+.container i{
+    cursor: pointer;
+}
+
+.top-bar, .progress-area .song-timer,.controls,.music-list .header, .music-list ul li{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.top-bar{
+    font-size: 28px;
+}
+
+.top-bar:first-child{
+    margin-left: -7px;
+    font-size: 23px;
+}
+
+.top-bar span{
+    font-size: 18px;
+    margin-left: -3px;
+}
+
+.img-area{
+    width: 100%;
+    height: 350px;
+    overflow: hidden;
+    margin-top: 25px;
+    border-radius: 50%;
+    box-shadow: 0 0 0 5px #ffffff, 0 0 2px #fff, 13px 13px 20px #31313163, -10px -10px 20px #e6f6ff;
+}
+
+.img-area img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.song-details{
+    text-align: center;
+    margin: 30px 0;
+
+}
+
+.song-details .name{
+    font-size: 21px;
+}
+
+.song-details .artist{
+    font-size: 15px;
+    opacity: 0.9;
+    line-height: 35px;
+}
+
+.progress-area{
+    height: 6px;
+    width: 100%;
+    border-radius: 50px;
+    background: #f0f0f081;
+    cursor: pointer;
+}
+
+.progress-area .progress-bar{
+    height: inherit;
+    width: 0%;
+    position: relative;
+    border-radius: inherit;
+    background: #ffffff;
+}
+
+.progress-bar::before{
+    content: '';
+    position: absolute;
+    height: 12px;
+    width: 12px;
+    border-radius: 50%;
+    top: 50%;
+    right: -5px;
+    z-index: 2;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-50%);
+    background: inherit;
+    transition: opacity 0.2s ease;
+}
+
+.progress-area:hover .progress-bar::before{
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.progress-area .song-timer{
+    margin-top: 2px;
+}
+
+.song-timer span{
+    font-size: 13px;
+}
+
+.controls{
+    margin: 70px 0 5px 0;
+}
+
+.controls i{
+    font-size: 28px;
+    user-select: none;
+}
+
+.controls i:nth-child(2)
+.controls i:nth-child(4){
+    font-size: 43px;
+}
+
+.controls #prev{
+    margin-right: -13px;
+    font-size: 38px;
+}
+
+.controls #next{
+    margin-left: -13px;
+    font-size: 38px;
+}
+
+
+
+.controls .play-pause{
+    height: 49px;
+    width: 49px;
+    display: flex;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    box-shadow: 0 0 2px #fff, 8px 8px 8px #31313163, -3px -3px 15px #f0ecec ;
+}
+
+.controls .play-pause #play{
+    transform: translateX(1.7px);
+}
+
+.play-pause::before{
+    position: absolute;
+    content: "";
+    height: 43px;
+    width: 43px;
+    background: transparent;
+    border: 3px solid #ffffff;
+    border-radius: inherit;
+
+}
+
+.music-list{
+    position: absolute;
+    width: 100%;
+    left:0;
+    bottom: -55%;
+    opacity: 0;
+    pointer-events: none;
+    background-color: rgba(255, 255, 255, 0.623);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 -5px 10px rgba(0, 0, 0, 0.3);
+    background-blend-mode:screen ;
+    z-index: 5;
+    padding: 15px 30px;
+    border-radius: 15px;
+    transition: all 0.15s ease-in-out;
+}
+
+.music-list.show{
+    bottom: 0;
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.music-list ul{
+    margin-top: 10px ;
+    max-height: 260px;
+    overflow: auto;
+}
+
+.music-list ul li{
+    list-style: none;
+    display: flex;
+    cursor: pointer;
+    padding-bottom: 10px;
+    margin-bottom: 5px;
+    border-bottom: 1px solid #000000;
+}
+
+.music-list ul li:last-child{
+    border-bottom: 0px;
+}
+
+.music-list ul li .row span{
+    font-size: 17px;
+}
+
+.music-list ul li .row p{
+    opacity: 0.7;
+}
+
+ul li .audio-duration{
+    font-size: 16px;
+}
+
+.header .row{
+    display: flex;
+    align-items: center;
+    font-size: 19px;
+
+}
+.header .row span{
+    margin-left: 5px;
+}
+
+.header .row i{
+    cursor: default;
+}
+
+.header #close{
+    font-size: 22px;
+}
+
+.music-list ul::-webkit-scrollbar{
+    width: 0;
+}
+
+.music-list ul li:hover{
+    color: #f10404;
+}
+
+ul li .playing{
+    pointer-events: none;
+    color: #ffffff;
+}
+
+/*lluvia de petalos*/
+
+.burbuja_1,
+.burbuja_2,
+.burbuja_3,
+.burbuja_4,
+.burbuja_6,
+.burbuja_7,
+.burbuja_8,
+.burbuja_9,
+.burbuja_10,
+.burbuja_11,
+.burbuja_12,
+.burbuja_13,
+.burbuja_14,
+.burbuja_15,
+.burbuja_16
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 40%; /* Ancho total del contenedor */
+    height: 40%; /* Altura total del contenedor */
+     
+}
+.burbuja{
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    border-radius: 50%;
+    top:-10px;
+    box-shadow: inset 0 0 25px rgba(255, 255, 255, 0.25);
+    animation: floatBubble 8s linear infinite;
+}
+
+@keyframes floatBubble {
+    0% {
+        transform: translateY(-20px);
+    }
+    100% {
+        transform: translateY(120vh);
+    }
+}
+.burbuja::before{
+    content: " ";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #fff;
+    position: absolute;
+    top: 13px;
+    width: 25px;
+    height: 25px;
+    left: 18px;
+    z-index: 10;
+    filter: blur(2px);
+}
+
+.burbuja::after{
+    content: " ";
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: #fff;
+    position: absolute;
+    top: 42px;
+    width: 15px;
+    height: 15px;
+    left: 43px;
+    z-index: 10;
+    filter: blur(2px);
+}
+
+.burbuja span{
+    position: absolute;
+    border-radius: 50%;
+}
+
+
+.burbuja span:nth-child(1)
+{   inset: 10px;
+    border-left: 10px solid #0fb2ff;
+    filter: blur(10px);
+
+}
+.burbuja span:nth-child(2)
+{   inset: 10px;
+    border-right: 10px solid #ff4482;
+    filter: blur(10px);
+
+
+}
+.burbuja span:nth-child(3)
+{   inset: 20px;
+    border-top: 10px solid #ffeb2b;
+    filter: blur(15px);
+
+}
+.burbuja span:nth-child(4)
+{   inset: 20px;
+    border-bottom: 10px solid #ff4482;
+    filter: blur(12px);
+
+}
+.burbuja span:nth-child(4)
+{   inset: 20px;
+    border-bottom: 10px solid #fff;
+    filter: blur(7px);
+    transform: rotate(330deg);
+
+}
+.burbuja_1 {
+    top: -200px;
+    left: 550px;
+}
+
+.burbuja_2 {
+    top: -280px;
+    left: 350px;
+}
+
+.burbuja_3 {
+    top: -150px;
+    left: 190px;
+}
+
+.burbuja_4 {
+    top: -50px;
+    left: 700px;
+}
+
+.burbuja_5 {
+    top: -180px;
+    left: 750px;
+}
+
+.burbuja_6 {
+    top: -180px;
+    left: 1050px;
+}
+
+.burbuja_7 {
+    top: -80px;
+    left: 900px;
+}
+
+.burbuja_15 {
+    top: -400px;
+    left: 550px;
+}
+
+.burbuja_9 {
+    top: -580px;
+    left: 350px;
+}
+
+.burbuja_10 {
+    top: -550px;
+    left: 190px;
+}
+
+.burbuja_11 {
+    top: -450px;
+    left: 700px;
+}
+
+.burbuja_12 {
+    top: -390px;
+    left: 1000px;
+}
+
+.burbuja_13 {
+    top: -300px;
+    left: -10px;
+}
+
+.burbuja_14 {
+    top: -350px;
+    left: -200px;
+}
+
+.burbuja_8 {
+    top: -180px;
+    left: -200px;
+}
+
+.burbuja_16 {
+    top: -280px;
+    left: 750px;
+}
+
+@media screen and (max-width: 768px) {
+    main {
+        max-width: 100%; /* Cambia el ancho máximo para adaptarse a dispositivos más pequeños */
+    }
+
+    /* Puedes agregar estilos adicionales aquí si es necesario para adaptarse mejor a pantallas más pequeñas */
+}
